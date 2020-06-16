@@ -1,3 +1,5 @@
+ <?php include 'login.php';?> 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,16 +55,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="about.php">About</a>
                     </li>
                     <li>
-                        <a href="blog.html">Blog</a>
+                        <a href="blog.php">Blog</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -72,7 +74,7 @@
     </nav>
 
 
-    <div class="container">
+   <!-- <div class="container">
 
         <div class="row">
             <div class="box">
@@ -124,13 +126,13 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
     <!--container -->
     <!--Modal-1-->
-	<div id="myModal" class="modal fade" role="dialog">
+<!--	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-			<!--Modal Content-->
-			<div class="modal-header">
+			Modal Content-->
+		<!--	<div class="modal-header">
 				<button type="button" class="close" data-dismiss-="modal">&times;</button>
 				<h4 class="modal-title">Coconut Oil Coffee</h4>
 			</div>
@@ -143,11 +145,11 @@
 		</div>
 	</div>
    
-    <!--Modal-2-->
-	<div id="myModal2" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+   Modal-2-->
+	<!--<div id="myModal2" class="modal fade" role="dialog"> 
+		<div class="modal-dialog">-->
 			<!--Modal Content-->
-			<div class="modal-header">
+	<!--		<div class="modal-header">
 				<button type="button" class="close" data-dismiss-="modal">&times;</button>
 				<h4 class="modal-title">Irish Coffee</h4>
 			</div>
@@ -158,13 +160,13 @@
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
-	</div>
+	</div> -->
    
     <!--Modal-3-->
-	<div id="myModal3" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+<!--	<div id="myModal3" class="modal fade" role="dialog">
+		<div class="modal-dialog">-->
 			<!--Modal Content-->
-			<div class="modal-header">
+	<!--		<div class="modal-header">
 				<button type="button" class="close" data-dismiss-="modal">&times;</button>
 				<h4 class="modal-title">Frozen Caramel Latte</h4>
 			</div>
@@ -175,7 +177,78 @@
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
+
+
+      
+    <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Login
+                    </h2>
+                    <hr>
+                    
+                    <form  id ="myform" role="form" method="POST">
+                        <div class="row">
+                       
+                            
+                            <div class="form-group col-lg-4">
+                                <label>Email Address</label>
+                                <input type="email" id="email" name="email_adresse" maxlength="25" class="form-control">
+                            </div>
+                            
+                            <div class="form-group col-lg-4">
+                                <label>password</label>
+                                <input type="password" id="password" name="password" maxlength="25" class="form-control">
+                             
+                            </div>
+
+                          
+
+
+                            <div class="clearfix"></div>
+                           
+                                    <div class="form-group col-lg-12">
+
+                                        <button type="submit" id="contact" name="click" value="click" class="btn btn-default">Login</button>
+                                    </div>
+
+
+                        </div>
+                    </form>
+                   
+                    <div class="form-group col-lg-12">
+
+                    <a href="contact.php" id="contact" class="btn btn-default">Register Here</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <footer>
         <div class="container">
             <div class="row">
@@ -185,6 +258,24 @@
             </div>
         </div>
     </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -196,6 +287,27 @@
 
     <script src="./js/try.js"></script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
+
+
+
+
+
+
+
 
 </html>

@@ -43,6 +43,7 @@
                 }
                 $msg="<div class='alert alert-success'><strong>your registration confirmed</strong></div>";
 
+                
             }
         }
     ?>
