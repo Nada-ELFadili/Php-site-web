@@ -106,6 +106,7 @@
 
 
 
+
                 
                 <div class="clearfix"></div>
             </div>
@@ -120,7 +121,6 @@
                     </h2>
                     <hr>
                     <div id="add_err2"><?php echo $msg ?> </div> 
-
 
                     <form  id ="myform" role="form" method="POST">
                         <div class="row">
