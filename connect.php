@@ -6,6 +6,8 @@
 
         // }
 
+        session_start();
+       
 
             $msg="";
 

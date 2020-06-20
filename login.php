@@ -1,4 +1,4 @@
-<?php include 'pcheck.php'; ?>
+ <?php //include 'pcheck.php'; ?> 
 
 
 
@@ -38,7 +38,7 @@
 <!--    Registration scipt-->
     <script>
 
-    /*   $(document).ready(function(){
+       $(document).ready(function(){
 
           $("#login").click(function(){
             email=$("#email_adresse").val();
@@ -75,7 +75,7 @@
                   });
               return false;
           });
-        }); */
+        }); 
 
     </script>
 
