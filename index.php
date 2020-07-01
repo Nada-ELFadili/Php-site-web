@@ -66,6 +66,10 @@
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
+                    <li>
+                        <a href="register.php">Register</a>
+                    </li>
+                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

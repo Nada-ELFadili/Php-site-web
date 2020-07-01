@@ -1,8 +1,5 @@
- <?php //include 'pcheck.php'; ?> 
-
-
-
-
+<?php session_start();?>
+<?php include 'conn.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registration - The Perfect Cup</title>
+    <title>The Perfect Cup - Contact</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,51 +30,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="js/jquery.js"></script>
-
-<!--    Registration scipt-->
-    <script>
-
-       $(document).ready(function(){
-
-          $("#login").click(function(){
-            email=$("#email_adresse").val();
-          password=$("#password").val();
-
-              $.ajax({
-                  type:"POST",
-                  url:"pcheck.php",
-                  data:"email_adresse="+email+"&password="+password,
-                  success:function(html){
-                      if (html=='true'){
-                              $("#add_err2").html('<div class="alert alert-success"> \
-                                                    <strong>Authenticated</strong>. \ \
-                                                    </div>');
-                                  window.location.href="blog.php";
-                      }
-
-                      else if (html==false){
-                             $("#add_err2").html('<div class="alert alert-danger"> \
-                                                    <strong>Autthentication failure</strong>. \ \
-                                                     </div>');
-                      }
-                      else {
-                          $("#add_err2").html('<div class="alert alert-danger"> \
-                                                 <strong>Error</strong> processing request. Please try again. \ \
-                                                 </div>');
-                      }
-                  }
-
-                  beforeSend:function(){
-                      $("#add_err2").html("loading...");
-                  }
-
-                  });
-              return false;
-          });
-        }); 
-
-    </script>
 
 </head>
 
@@ -86,41 +38,118 @@
     <div class="brand">The Perfect Cup</div>
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
-    <!-- Navigation -->
-    <?php require_once 'nav.php';?>
+       <!-- Navigation -->
+
+   <?php include 'nav.php'; ?>
+
+<!-- END Navigation -->
+
+
+<?php
+
+
+    $message = "";
+if (isset($_POST['login'])) {
+
+    
+
+    // $serverName = "localhost";
+    // $dbUsername = "root";
+    // $dbPassword = "";
+    // $dbName = "perfect-cuo";
+    
+    // $conn = mysqli_connect($serverName, $dbUsername, $dbPassword, $dbName, 3308);
+    
+    // Check connection
+    // if (!$conn) {
+    //     die("connection failed:  ".mysqli_connect_error()) ;
+        
+    //   }
+    //   else {
+    //       echo("connection successful");
+    //   }
+    
+    
+    
+
+    
+    $email = $_POST['email_adresse'];
+    $password = $_POST['password'];
+
+   
+
+    $query = "SELECT * FROM contact WHERE email_adresse = '{$email}'";
+    $login_query = mysqli_query($conn,$query);
+
+    if (!$login_query) {
+        die("QUERY FAILED" . mysqli_error($conn));
+    }
+
+    while($row = mysqli_fetch_assoc($login_query)){
+        $db_id = $row['id'];
+        $db_email_adresse = $row['email_adresse'];
+        $db_password = $row['password'];
+        $db_fname = $row['fname'];
+        $db_lname = $row['lname'];
+    } 
+    $row_count = mysqli_num_rows($login_query);
+
+    if ($row_count < 1) {
+        $message = "<div class='alert alert-danger'>this email does not exist, try again or <a href='register.php'>register</a> </div>";
+    }else {
+        if ($password === $db_password) {
+            // $message = "<div class='alert alert-success'>Welcome $db_fname </div>";
+            $_SESSION['id'] = $db_id;
+            $_SESSION['fname'] = $db_fname;
+            $_SESSION['lname'] = $db_lname;
+
+            header('location: blog.php');
+        } else{
+            $message =  "<div class='alert alert-danger'>your password is incorrect</div>";
+        }
+    }
+    
+
+
+}
+
+?>  
+
+
 
     <div class="container">
 
-
+        
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
-                    <div class="alert alert-danger"><strong>You must be logged in to view the blog</strong></div>
-
                     <hr>
-                    <h2 class="intro-text text-center"><strong>Login</strong></h2>
-                    <div id="add_err2"></div>
+                    <h2 class="intro-text text-center">Login
+                        <strong>form</strong>
+                    </h2>
                     <hr>
-                    <form role="form" method="POST" >
+                    <div id="add_err2"> 
+                    <?php echo $message ?>
+                    </div>
+                    <form role="form" action="login.php" method="post">
                         <div class="row">
                             <div class="form-group col-lg-6">
-                                <label>Email address</label>
-                                <input type="email" id="email" name="email_adresse" class="form-control" maxlength="25">
+                                <label>Email Address</label>
+                                <input type="email" id="email" name="email_adresse" maxlength="25" class="form-control">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Password</label>
-                                <input type="password" id="password" name="password" class="form-control" maxlength="25">
+                                <input type="password" id="password" name="password" maxlength="25" class="form-control">
                             </div>
                             <div class="form-group col-lg-12">
-                               <button type="submit" class="btn btn-default" id="login">Login</button>
+                                <button type="submit" id="contact" name="login" class="btn btn-default">Submit</button>
+                            </div>
+                            <div class="form-group col-lg-4">
+                            <a href="contact.php" class="btn btn-default">Not a member? register here</a>
                             </div>
                         </div>
                     </form>
-                    <div class="form-group col-lg-12">
-                        <a href="contact.php"><button type="submit" class="btn btn-default">Not a Member? Register here.</button> </a>
-                    </div>
                 </div>
-
             </div>
         </div>
 
@@ -131,13 +160,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; The Perfect Cup</p>
+                    <p>Copyright &copy; The Perfect Cup 2019</p>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- jQuery -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -145,15 +172,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
